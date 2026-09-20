@@ -88,13 +88,20 @@ p {
 
 /* =========================
    encabezado
+   position sticky
    ========================= */
 
 header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+
     padding: var(--espacio-lg) var(--espacio-sm);
 
     color: var(--color-texto-claro);
     background-color: var(--color-principal);
+
+    box-shadow: 0 0.2rem 0.8rem rgba(87, 32, 56, 0.15);
 }
 
 header > div {
@@ -113,17 +120,15 @@ header > div > p:first-child {
 
 
 /* =========================
-   navegación
-   position sticky + flexbox
+   navegación con flexbox
    ========================= */
 
 nav {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-
-    margin: var(--espacio-lg) calc(var(--espacio-sm) * -1)
+    margin:
+        var(--espacio-lg)
+        calc(var(--espacio-sm) * -1)
         calc(var(--espacio-lg) * -1);
+
     padding: var(--espacio-xs) var(--espacio-sm);
 
     background-color: var(--color-principal-oscuro);
@@ -131,6 +136,7 @@ nav {
 
 nav ul {
     display: flex;
+    flex-wrap: nowrap;
     gap: var(--espacio-xs);
 
     max-width: var(--ancho-maximo);
@@ -162,23 +168,30 @@ nav a:focus-visible {
     background-color: var(--color-secundario);
 }
 
+nav a:focus-visible {
+    outline: 0.15rem solid var(--color-acento);
+    outline-offset: 0.15rem;
+}
+
 
 /* =========================
    contenido principal
+   mobile first
    ========================= */
 
 main {
-    width: min(100%, var(--ancho-maximo));
-    margin: 0 auto;
-    padding: var(--espacio-md) var(--espacio-sm);
-
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: var(--espacio-lg);
+
+    width: min(100%, var(--ancho-maximo));
+    margin: 0 auto;
+    padding: var(--espacio-md) var(--espacio-sm);
 }
 
 section {
     min-width: 0;
+    scroll-margin-top: 14rem;
 }
 
 .etiqueta-seccion {
@@ -186,17 +199,16 @@ section {
 
     font-size: 0.8rem;
     font-weight: 700;
-
-    color: var(--color-secundario);
-
     letter-spacing: 0.08em;
     text-transform: uppercase;
+
+    color: var(--color-secundario);
 }
 
 
 /* =========================
    ahora
-   prioridad móvil
+   prioridad en teléfono
    ========================= */
 
 #ahora {
@@ -223,6 +235,7 @@ section {
 }
 
 .actividad-destacada {
+    min-width: 0;
     padding: var(--espacio-md);
 
     color: var(--color-texto);
@@ -254,9 +267,14 @@ section {
     align-items: flex-start;
     gap: var(--espacio-sm);
 
+    min-width: 0;
     padding: var(--espacio-sm) 0;
 
     border-bottom: 0.0625rem solid var(--color-borde);
+}
+
+.evento:last-child {
+    border-bottom: 0;
 }
 
 .evento time {
@@ -279,7 +297,7 @@ section {
 
 /* =========================
    espacios
-   grid
+   css grid
    ========================= */
 
 .grid-espacios {
@@ -289,6 +307,7 @@ section {
 }
 
 .espacio {
+    min-width: 0;
     padding: var(--espacio-md);
 
     background-color: var(--color-superficie);
@@ -355,6 +374,9 @@ section {
     color: var(--color-principal);
 }
 
+.actividad-destacada p,
+.espacio p,
+.aviso p,
 .servicio p {
     overflow-wrap: anywhere;
 }
@@ -384,6 +406,7 @@ footer p:last-child {
 
 /* ==================================================
    tablet
+   reorganización desde 601px
    ================================================== */
 
 @media (min-width: 601px) {
@@ -399,6 +422,10 @@ footer p:last-child {
 
     main {
         padding: var(--espacio-lg) var(--espacio-md);
+    }
+
+    section {
+        scroll-margin-top: 13rem;
     }
 
     .lista-ahora {
@@ -417,6 +444,7 @@ footer p:last-child {
 
 /* ==================================================
    escritorio
+   reorganización desde 1024px
    ================================================== */
 
 @media (min-width: 1024px) {
@@ -433,6 +461,10 @@ footer p:last-child {
     main {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: var(--espacio-xl);
+    }
+
+    section {
+        scroll-margin-top: 14rem;
     }
 
     #ahora,
