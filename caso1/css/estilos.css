@@ -1,22 +1,51 @@
+/* ==================================================
+   caso 1 - expedición bosque nuboso 2026
+   centro de control científico
+   diseño mobile first
+   ================================================== */
+
+
 /* =========================
    variables generales
+   sistema reutilizable de
+   colores, espacios y medidas
    ========================= */
 
 :root {
     --color-fondo: #f1f5f2;
     --color-superficie: #ffffff;
+
     --color-principal: #173f35;
     --color-secundario: #2f6b59;
+
     --color-texto: #1f2926;
     --color-texto-claro: #ffffff;
     --color-borde: #d5dfda;
+
+    /* colores de prioridad y estado */
+    --color-rojo-texto: #7d1f23;
+    --color-rojo-fondo: #f8dddd;
+
+    --color-amarillo-texto: #70540b;
+    --color-amarillo-fondo: #fff0bd;
+
+    --color-verde-texto: #285d42;
+    --color-verde-fondo: #dcefe3;
+
+    --color-azul-texto: #1d5367;
+    --color-azul-fondo: #dceef5;
 
     --espacio-xs: 0.5rem;
     --espacio-sm: 1rem;
     --espacio-md: 1.5rem;
     --espacio-lg: 2rem;
+    --espacio-xl: 3rem;
 
     --radio: 0.75rem;
+
+    --sombra: 0 0.25rem 1rem rgba(23, 63, 53, 0.08);
+
+    --ancho-maximo: 87.5rem;
 }
 
 
@@ -34,10 +63,15 @@ html {
 
 body {
     margin: 0;
+
     font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--color-fondo);
-    color: var(--color-texto);
     line-height: 1.5;
+
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+
+    /* evita desplazamientos horizontales accidentales */
+    overflow-x: hidden;
 }
 
 h1,
@@ -47,23 +81,53 @@ p {
     margin-top: 0;
 }
 
+h1 {
+    margin-bottom: var(--espacio-xs);
+
+    font-size: clamp(1.7rem, 6vw, 2.5rem);
+    line-height: 1.1;
+}
+
 h2 {
+    margin-bottom: var(--espacio-md);
+
+    font-size: 1.35rem;
     color: var(--color-principal);
+}
+
+h3 {
+    margin-bottom: var(--espacio-xs);
+}
+
+p {
+    margin-bottom: var(--espacio-xs);
 }
 
 
 /* =========================
-   encabezado
+   encabezado principal
+
+   position sticky permite
+   mantener disponible la
+   navegación durante el uso
+   del centro de control
    ========================= */
 
 header {
-    background-color: var(--color-principal);
-    color: var(--color-texto-claro);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
     padding: var(--espacio-md);
+
+    color: var(--color-texto-claro);
+    background-color: var(--color-principal);
+
+    box-shadow: 0 0.2rem 0.8rem rgba(23, 63, 53, 0.18);
 }
 
 header h1 {
-    margin-bottom: var(--espacio-xs);
+    color: var(--color-texto-claro);
 }
 
 header p {
@@ -73,68 +137,110 @@ header p {
 
 /* =========================
    navegación
+
+   flexbox se utiliza para
+   distribuir los enlaces en
+   una sola dimensión
    ========================= */
 
 nav ul {
-    list-style: none;
-    margin: var(--espacio-md) 0 0;
-    padding: 0;
-
     display: flex;
     flex-wrap: wrap;
     gap: var(--espacio-xs);
+
+    margin: var(--espacio-md) 0 0;
+    padding: 0;
+
+    list-style: none;
 }
 
 nav a {
     display: block;
+
     padding: 0.6rem 0.9rem;
+
     color: var(--color-texto-claro);
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+
+    border: 0.0625rem solid rgba(255, 255, 255, 0.4);
     border-radius: var(--radio);
 }
 
 nav a:hover,
-nav a:focus {
+nav a:focus-visible {
     background-color: var(--color-secundario);
+    border-color: var(--color-texto-claro);
+}
+
+/* foco visible para navegación mediante teclado */
+nav a:focus-visible {
+    outline: 0.15rem solid var(--color-texto-claro);
+    outline-offset: 0.15rem;
 }
 
 
 /* =========================
    contenido principal
-   mobile first
+
+   mobile first:
+   inicialmente se utiliza
+   una sola columna
    ========================= */
 
 main {
-    padding: var(--espacio-sm);
-
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--espacio-md);
-}
 
-section {
-    background-color: var(--color-superficie);
-    padding: var(--espacio-md);
-    border: 1px solid var(--color-borde);
-    border-radius: var(--radio);
+    width: min(100%, var(--ancho-maximo));
+    margin: 0 auto;
+    padding: var(--espacio-sm);
 }
 
 
 /* =========================
-   indicadores
+   secciones generales
+   ========================= */
+
+section {
+    min-width: 0;
+
+    padding: var(--espacio-md);
+
+    background-color: var(--color-superficie);
+
+    border: 0.0625rem solid var(--color-borde);
+    border-radius: var(--radio);
+
+    /*
+       evita que el encabezado sticky
+       cubra el título al navegar
+       mediante enlaces internos
+    */
+    scroll-margin-top: 13rem;
+}
+
+
+/* =========================
+   indicadores generales
    ========================= */
 
 .indicadores {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--espacio-sm);
 }
 
 .indicador {
+    min-width: 0;
     padding: var(--espacio-sm);
-    border: 1px solid var(--color-borde);
+
+    background-color: var(--color-superficie);
+
+    border: 0.0625rem solid var(--color-borde);
     border-radius: var(--radio);
+
+    box-shadow: var(--sombra);
 }
 
 .indicador h3 {
@@ -143,14 +249,20 @@ section {
 
 .indicador p {
     margin-bottom: 0;
+
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: 700;
+
     color: var(--color-secundario);
 }
 
 
 /* =========================
-   listas y tarjetas
+   listas principales
+
+   grid organiza las tarjetas
+   y permite reorganizarlas
+   según el ancho disponible
    ========================= */
 
 .lista-misiones,
@@ -158,17 +270,28 @@ section {
 .lista-alertas,
 .lista-actividades {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--espacio-sm);
 }
+
+
+/* =========================
+   tarjetas
+   ========================= */
 
 .mision,
 .equipo,
 .alerta,
 .actividad {
+    min-width: 0;
     padding: var(--espacio-sm);
-    border: 1px solid var(--color-borde);
+
+    background-color: var(--color-superficie);
+
+    border: 0.0625rem solid var(--color-borde);
     border-radius: var(--radio);
+
+    box-shadow: var(--sombra);
 }
 
 .mision p,
@@ -176,31 +299,174 @@ section {
 .alerta p,
 .actividad p {
     margin-bottom: var(--espacio-xs);
+
+    /* evita que textos largos provoquen overflow */
+    overflow-wrap: anywhere;
+}
+
+.mision p:last-child,
+.equipo p:last-child,
+.alerta p:last-child,
+.actividad p:last-child {
+    margin-bottom: 0;
 }
 
 
 /* =========================
-   alertas
+   prioridades y estados
+
+   el color funciona como
+   apoyo visual, pero cada
+   elemento también contiene
+   una etiqueta textual
+   ========================= */
+
+.prioridad,
+.estado {
+    display: inline-block;
+
+    padding: 0.2em 0.55em;
+
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1.4;
+
+    border: 0.0625rem solid currentColor;
+    border-radius: var(--radio);
+}
+
+
+/* prioridad alta */
+.prioridad-alta {
+    color: var(--color-rojo-texto);
+    background-color: var(--color-rojo-fondo);
+}
+
+
+/* prioridad media */
+.prioridad-media {
+    color: var(--color-amarillo-texto);
+    background-color: var(--color-amarillo-fondo);
+}
+
+
+/* prioridad baja */
+.prioridad-baja {
+    color: var(--color-verde-texto);
+    background-color: var(--color-verde-fondo);
+}
+
+
+/* misión actualmente en progreso */
+.estado-progreso {
+    color: var(--color-azul-texto);
+    background-color: var(--color-azul-fondo);
+}
+
+
+/* misión pendiente */
+.estado-pendiente {
+    color: var(--color-amarillo-texto);
+    background-color: var(--color-amarillo-fondo);
+}
+
+
+/* misión suspendida */
+.estado-suspendida {
+    color: var(--color-rojo-texto);
+    background-color: var(--color-rojo-fondo);
+}
+
+
+/* misión completada */
+.estado-completada {
+    color: var(--color-verde-texto);
+    background-color: var(--color-verde-fondo);
+}
+
+
+/* =========================
+   alertas operativas
+
+   además del color, cada
+   alerta indica textualmente
+   su nivel de importancia
    ========================= */
 
 .alerta {
     border-left-width: 0.4rem;
 }
 
+.alerta h3 {
+    font-size: 1rem;
+}
+
+
+/* nivel crítico */
 .alerta-critica {
     border-left-color: #9f1d20;
 }
 
+.alerta-critica h3 {
+    color: #7d1f23;
+}
+
+
+/* nivel alto */
 .alerta-alta {
     border-left-color: #d35f18;
 }
 
+.alerta-alta h3 {
+    color: #9a4313;
+}
+
+
+/* nivel medio */
 .alerta-media {
     border-left-color: #d0a21b;
 }
 
+.alerta-media h3 {
+    color: #70540b;
+}
+
+
+/* nivel bajo */
 .alerta-baja {
     border-left-color: #3f7d58;
+}
+
+.alerta-baja h3 {
+    color: #285d42;
+}
+
+
+/* =========================
+   agenda
+
+   flexbox organiza el
+   contenido interno de cada
+   actividad verticalmente
+   ========================= */
+
+.actividad {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.25rem;
+}
+
+.actividad h3 {
+    margin-bottom: 0;
+
+    font-size: 1rem;
+    color: var(--color-principal);
+}
+
+.actividad time {
+    font-weight: 700;
+    color: var(--color-secundario);
 }
 
 
@@ -210,9 +476,11 @@ section {
 
 footer {
     padding: var(--espacio-md);
+
     text-align: center;
-    background-color: var(--color-principal);
+
     color: var(--color-texto-claro);
+    background-color: var(--color-principal);
 }
 
 footer p {
@@ -220,48 +488,76 @@ footer p {
 }
 
 
-
-/* =========================
+/* ==================================================
    tablet
-   ========================= */
+   desde 601px
+
+   el contenido comienza a
+   reorganizarse en dos columnas
+   ================================================== */
 
 @media (min-width: 601px) {
 
     main {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        padding: var(--espacio-md);
     }
 
+    section {
+        scroll-margin-top: 11rem;
+    }
+
+
+    /* resumen ocupa todo el ancho */
     #resumen {
         grid-column: 1 / -1;
     }
 
+
+    /* indicadores en dos columnas */
     .indicadores {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 
+
+    /* misiones y equipos utilizan dos columnas */
     .lista-misiones,
     .lista-equipos {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 
+
+    /* alertas y agenda ocupan todo el ancho */
     #alertas,
     #agenda {
         grid-column: 1 / -1;
     }
 
+
+    /* contenido interno en dos columnas */
     .lista-alertas,
     .lista-actividades {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 }
 
 
-/* =========================
+/* ==================================================
    escritorio
-   ========================= */
+   desde 1024px
+
+   el centro de control pasa a
+   una distribución multizona
+   ================================================== */
 
 @media (min-width: 1024px) {
 
+    /* encabezado horizontal mediante flexbox */
     header {
         display: flex;
         justify-content: space-between;
@@ -270,53 +566,80 @@ footer p {
     }
 
     nav ul {
+        justify-content: flex-end;
         margin-top: 0;
     }
 
+
+    /* evita que el header sticky cubra los títulos */
+    section {
+        scroll-margin-top: 8rem;
+    }
+
+
+    /*
+       grid principal del dashboard:
+       contenido operativo a la izquierda
+       información secundaria a la derecha
+    */
     main {
-        max-width: 1400px;
-        margin: 0 auto;
+        grid-template-columns:
+            minmax(0, 2fr)
+            minmax(18rem, 1fr);
 
-        grid-template-columns: 2fr 1fr;
-        align-items: start;
+        grid-template-areas:
+            "resumen resumen"
+            "misiones alertas"
+            "misiones agenda"
+            "equipos agenda";
+
+        gap: var(--espacio-lg);
+
+        padding: var(--espacio-lg);
     }
 
+
+    /* asignación de las áreas del grid */
     #resumen {
-        grid-column: 1 / -1;
-    }
-
-    .indicadores {
-        grid-template-columns: repeat(4, 1fr);
+        grid-area: resumen;
     }
 
     #misiones {
-        grid-column: 1;
+        grid-area: misiones;
     }
 
     #equipos {
-        grid-column: 1;
+        grid-area: equipos;
     }
 
     #alertas {
-        grid-column: 2;
-        grid-row: 2;
+        grid-area: alertas;
     }
 
     #agenda {
-        grid-column: 2;
-        grid-row: 3;
+        grid-area: agenda;
     }
 
-    .lista-misiones {
-        grid-template-columns: repeat(2, 1fr);
+
+    /* cuatro indicadores simultáneos */
+    .indicadores {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
     }
 
+
+    /* tarjetas principales en dos columnas */
+    .lista-misiones,
     .lista-equipos {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 
+
+    /* columna lateral en una sola columna */
     .lista-alertas,
     .lista-actividades {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            minmax(0, 1fr);
     }
 }
