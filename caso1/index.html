@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,7 @@
         <div>
             <h1>expedición bosque nuboso 2026</h1>
             <p>estación biológica monteverde · día 4 de 7</p>
-            <p>operaciones activas</p>
+            <p><strong>estado general:</strong> operaciones activas</p>
         </div>
 
         <nav aria-label="navegación principal">
@@ -31,63 +32,218 @@
 
     <main>
 
+        <!-- resumen general -->
+
         <section id="resumen">
             <h2>resumen de operaciones</h2>
 
-            <article>
-                <h3>investigadores activos</h3>
-                <p>24</p>
-            </article>
+            <div class="indicadores">
 
-            <article>
-                <h3>misiones en progreso</h3>
-                <p>5</p>
-            </article>
+                <article class="indicador">
+                    <h3>investigadores activos</h3>
+                    <p>24</p>
+                </article>
 
-            <article>
-                <h3>misiones completadas</h3>
-                <p>8</p>
-            </article>
+                <article class="indicador">
+                    <h3>misiones en progreso</h3>
+                    <p>2</p>
+                </article>
 
-            <article>
-                <h3>alertas pendientes</h3>
-                <p>4</p>
-            </article>
+                <article class="indicador">
+                    <h3>misiones completadas</h3>
+                    <p>1</p>
+                </article>
+
+                <article class="indicador">
+                    <h3>alertas pendientes</h3>
+                    <p>4</p>
+                </article>
+
+            </div>
         </section>
+
+
+        <!-- misiones -->
 
         <section id="misiones">
-            <h2>misiones activas</h2>
+            <h2>misiones</h2>
 
-            <!-- aquí colocaremos las cinco misiones -->
+            <div class="lista-misiones">
 
+                <article class="mision">
+                    <h3>monitoreo de anfibios</h3>
+
+                    <p><strong>equipo:</strong> biología</p>
+                    <p><strong>ubicación:</strong> sendero norte</p>
+                    <p><strong>horario:</strong> 08:30 - 11:30</p>
+                    <p><strong>prioridad:</strong> alta</p>
+                    <p><strong>estado:</strong> en progreso</p>
+                </article>
+
+                <article class="mision">
+                    <h3>análisis de calidad del agua</h3>
+
+                    <p><strong>equipo:</strong> hidrología</p>
+                    <p><strong>ubicación:</strong> quebrada central</p>
+                    <p><strong>horario:</strong> 09:00 - 12:00</p>
+                    <p><strong>prioridad:</strong> media</p>
+                    <p><strong>estado:</strong> en progreso</p>
+                </article>
+
+                <article class="mision">
+                    <h3>registro meteorológico</h3>
+
+                    <p><strong>equipo:</strong> meteorología</p>
+                    <p><strong>ubicación:</strong> estación norte</p>
+                    <p><strong>horario:</strong> 10:00 - 13:00</p>
+                    <p><strong>prioridad:</strong> alta</p>
+                    <p><strong>estado:</strong> suspendida</p>
+                </article>
+
+                <article class="mision">
+                    <h3>muestreo de suelo</h3>
+
+                    <p><strong>equipo:</strong> geología</p>
+                    <p><strong>ubicación:</strong> sector rocoso</p>
+                    <p><strong>horario:</strong> 13:00 - 15:30</p>
+                    <p><strong>prioridad:</strong> baja</p>
+                    <p><strong>estado:</strong> pendiente</p>
+                </article>
+
+                <article class="mision">
+                    <h3>observación de aves</h3>
+
+                    <p><strong>equipo:</strong> biología</p>
+                    <p><strong>ubicación:</strong> mirador del bosque</p>
+                    <p><strong>horario:</strong> 06:00 - 09:00</p>
+                    <p><strong>prioridad:</strong> media</p>
+                    <p><strong>estado:</strong> completada</p>
+                </article>
+
+            </div>
         </section>
+
+
+        <!-- equipos científicos -->
 
         <section id="equipos">
             <h2>equipos científicos</h2>
 
-            <!-- aquí colocaremos los cuatro equipos -->
+            <div class="lista-equipos">
 
+                <article class="equipo">
+                    <h3>biología</h3>
+
+                    <p><strong>integrantes:</strong> 8</p>
+                    <p><strong>misión actual:</strong> monitoreo de anfibios</p>
+                    <p><strong>estado:</strong> en campo</p>
+                    <p><strong>próxima actividad:</strong> registro de especies</p>
+                </article>
+
+                <article class="equipo">
+                    <h3>hidrología</h3>
+
+                    <p><strong>integrantes:</strong> 6</p>
+                    <p><strong>misión actual:</strong> análisis de calidad del agua</p>
+                    <p><strong>estado:</strong> en campo</p>
+                    <p><strong>próxima actividad:</strong> análisis de muestras</p>
+                </article>
+
+                <article class="equipo">
+                    <h3>meteorología</h3>
+
+                    <p><strong>integrantes:</strong> 5</p>
+                    <p><strong>misión actual:</strong> registro meteorológico</p>
+                    <p><strong>estado:</strong> en espera</p>
+                    <p><strong>próxima actividad:</strong> revisión de sensores</p>
+                </article>
+
+                <article class="equipo">
+                    <h3>geología</h3>
+
+                    <p><strong>integrantes:</strong> 5</p>
+                    <p><strong>misión actual:</strong> muestreo de suelo</p>
+                    <p><strong>estado:</strong> preparando equipo</p>
+                    <p><strong>próxima actividad:</strong> salida al sector rocoso</p>
+                </article>
+
+            </div>
         </section>
 
-        <aside id="alertas">
+
+        <!-- alertas -->
+
+        <section id="alertas">
             <h2>alertas</h2>
 
-            <!-- aquí colocaremos las cuatro alertas -->
+            <div class="lista-alertas">
 
-        </aside>
+                <article class="alerta alerta-critica">
+                    <h3>alerta crítica</h3>
+                    <p>tormenta eléctrica detectada cerca de la estación norte.</p>
+                </article>
+
+                <article class="alerta alerta-alta">
+                    <h3>alerta alta</h3>
+                    <p>nivel de agua elevado en la quebrada central.</p>
+                </article>
+
+                <article class="alerta alerta-media">
+                    <h3>alerta media</h3>
+                    <p>sensor de humedad requiere revisión.</p>
+                </article>
+
+                <article class="alerta alerta-baja">
+                    <h3>alerta baja</h3>
+                    <p>reposición de suministros programada para esta tarde.</p>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- agenda -->
 
         <section id="agenda">
             <h2>próximas actividades</h2>
 
-            <!-- aquí colocaremos las cinco actividades -->
+            <div class="lista-actividades">
 
+                <article class="actividad">
+                    <h3>11:30 · registro de especies</h3>
+                    <p><strong>equipo:</strong> biología</p>
+                </article>
+
+                <article class="actividad">
+                    <h3>12:00 · análisis de muestras</h3>
+                    <p><strong>equipo:</strong> hidrología</p>
+                </article>
+
+                <article class="actividad">
+                    <h3>13:00 · revisión de sensores</h3>
+                    <p><strong>equipo:</strong> meteorología</p>
+                </article>
+
+                <article class="actividad">
+                    <h3>13:30 · salida al sector rocoso</h3>
+                    <p><strong>equipo:</strong> geología</p>
+                </article>
+
+                <article class="actividad">
+                    <h3>16:00 · reunión de resultados</h3>
+                    <p><strong>equipo:</strong> todos los equipos</p>
+                </article>
+
+            </div>
         </section>
 
     </main>
+
 
     <footer>
         <p>expedición bosque nuboso 2026 · estación biológica monteverde</p>
     </footer>
 
 </body>
+
 </html>
