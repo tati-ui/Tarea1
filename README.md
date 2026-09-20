@@ -1,4 +1,4 @@
-# tarea 1 - programación web avanzada
+# Tarea 1 - programación web avanzada
 
 ## identificación
 
@@ -9,7 +9,7 @@
 
 ---
 
-## descripción del proyecto
+## Descripción del proyecto
 
 este proyecto corresponde a la tarea 1 del curso programación web avanzada.
 
@@ -39,7 +39,7 @@ las alertas utilizan diferentes niveles de importancia y combinan información t
 
 ---
 
-## decisiones de diseño del caso 1
+## Decisiones de diseño del caso 1
 
 ### estructura semántica
 
@@ -83,7 +83,7 @@ los estados, prioridades y niveles de alerta se indican mediante texto. el color
 
 ---
 
-# caso 2 - festival cultural raíces 2026
+# caso 2 - Festival cultural raíces 2026
 
 el segundo caso corresponde a un panel de consulta para el festival cultural raíces 2026.
 
@@ -101,7 +101,7 @@ la sección "ahora" tiene una prioridad visual mayor para permitir que el usuari
 
 ---
 
-## decisiones de diseño del caso 2
+## Decisiones de diseño del caso 2
 
 ### mobile first
 
