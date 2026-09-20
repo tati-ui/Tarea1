@@ -1,0 +1,466 @@
+/* ==================================================
+   caso 2 - festival cultural raíces 2026
+   diseño mobile first
+   ================================================== */
+
+:root {
+    --color-fondo: #fff8ee;
+    --color-superficie: #ffffff;
+    --color-principal: #7a2948;
+    --color-principal-oscuro: #572038;
+    --color-secundario: #d66b3d;
+    --color-acento: #e9ad3d;
+    --color-texto: #30252a;
+    --color-texto-secundario: #6c5c62;
+    --color-texto-claro: #ffffff;
+    --color-borde: #eadbd5;
+    --color-aviso: #fff1cc;
+
+    --espacio-xs: 0.5rem;
+    --espacio-sm: 1rem;
+    --espacio-md: 1.5rem;
+    --espacio-lg: 2rem;
+    --espacio-xl: 3rem;
+
+    --radio-sm: 0.5rem;
+    --radio-md: 1rem;
+    --radio-grande: 1.5rem;
+
+    --sombra: 0 0.25rem 1rem rgba(87, 32, 56, 0.08);
+
+    --ancho-maximo: 75rem;
+}
+
+
+/* =========================
+   estilos generales
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+h1 {
+    margin-bottom: var(--espacio-xs);
+
+    font-size: clamp(2.2rem, 10vw, 4rem);
+    line-height: 1;
+}
+
+h2 {
+    margin-bottom: var(--espacio-md);
+
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    color: var(--color-principal);
+}
+
+h3 {
+    margin-bottom: var(--espacio-xs);
+    font-size: 1.1rem;
+}
+
+p {
+    margin-bottom: var(--espacio-xs);
+}
+
+
+/* =========================
+   encabezado
+   ========================= */
+
+header {
+    padding: var(--espacio-lg) var(--espacio-sm);
+
+    color: var(--color-texto-claro);
+    background-color: var(--color-principal);
+}
+
+header > div {
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+}
+
+header > div > p:first-child {
+    margin-bottom: var(--espacio-xs);
+
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   navegación
+   position sticky + flexbox
+   ========================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+
+    margin: var(--espacio-lg) calc(var(--espacio-sm) * -1)
+        calc(var(--espacio-lg) * -1);
+    padding: var(--espacio-xs) var(--espacio-sm);
+
+    background-color: var(--color-principal-oscuro);
+}
+
+nav ul {
+    display: flex;
+    gap: var(--espacio-xs);
+
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+    padding: 0;
+
+    overflow-x: auto;
+
+    list-style: none;
+}
+
+nav li {
+    flex: 0 0 auto;
+}
+
+nav a {
+    display: block;
+
+    padding: 0.65rem 0.85rem;
+
+    color: var(--color-texto-claro);
+    text-decoration: none;
+
+    border-radius: var(--radio-sm);
+}
+
+nav a:hover,
+nav a:focus-visible {
+    background-color: var(--color-secundario);
+}
+
+
+/* =========================
+   contenido principal
+   ========================= */
+
+main {
+    width: min(100%, var(--ancho-maximo));
+    margin: 0 auto;
+    padding: var(--espacio-md) var(--espacio-sm);
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--espacio-lg);
+}
+
+section {
+    min-width: 0;
+}
+
+.etiqueta-seccion {
+    margin-bottom: var(--espacio-xs);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    color: var(--color-secundario);
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   ahora
+   prioridad móvil
+   ========================= */
+
+#ahora {
+    padding: var(--espacio-md);
+
+    color: var(--color-texto-claro);
+    background-color: var(--color-principal);
+
+    border-radius: var(--radio-grande);
+}
+
+#ahora h2 {
+    color: var(--color-texto-claro);
+}
+
+#ahora .etiqueta-seccion {
+    color: #ffd48b;
+}
+
+.lista-ahora {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--espacio-sm);
+}
+
+.actividad-destacada {
+    padding: var(--espacio-md);
+
+    color: var(--color-texto);
+    background-color: var(--color-superficie);
+
+    border-radius: var(--radio-md);
+
+    box-shadow: var(--sombra);
+}
+
+.actividad-destacada h3 {
+    color: var(--color-principal);
+}
+
+
+/* =========================
+   programación
+   flexbox
+   ========================= */
+
+.programacion {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-xs);
+}
+
+.evento {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--espacio-sm);
+
+    padding: var(--espacio-sm) 0;
+
+    border-bottom: 0.0625rem solid var(--color-borde);
+}
+
+.evento time {
+    flex: 0 0 4rem;
+
+    font-weight: 700;
+    color: var(--color-principal);
+}
+
+.evento div {
+    min-width: 0;
+    flex: 1;
+}
+
+.evento h3,
+.evento p {
+    margin-bottom: 0.25rem;
+}
+
+
+/* =========================
+   espacios
+   grid
+   ========================= */
+
+.grid-espacios {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--espacio-sm);
+}
+
+.espacio {
+    padding: var(--espacio-md);
+
+    background-color: var(--color-superficie);
+
+    border: 0.0625rem solid var(--color-borde);
+    border-radius: var(--radio-md);
+
+    box-shadow: var(--sombra);
+}
+
+.espacio h3 {
+    color: var(--color-principal);
+}
+
+
+/* =========================
+   cambios de programación
+   ========================= */
+
+#cambios {
+    padding: var(--espacio-md);
+
+    background-color: var(--color-aviso);
+
+    border-radius: var(--radio-grande);
+}
+
+.aviso {
+    padding: var(--espacio-sm) 0;
+
+    border-bottom: 0.0625rem solid rgba(122, 41, 72, 0.2);
+}
+
+.aviso:last-child {
+    border-bottom: 0;
+}
+
+.aviso h3 {
+    color: var(--color-principal);
+}
+
+
+/* =========================
+   servicios
+   ========================= */
+
+.lista-servicios {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espacio-sm);
+}
+
+.servicio {
+    min-width: 0;
+    padding: var(--espacio-sm);
+
+    background-color: var(--color-superficie);
+
+    border: 0.0625rem solid var(--color-borde);
+    border-radius: var(--radio-md);
+}
+
+.servicio h3 {
+    color: var(--color-principal);
+}
+
+.servicio p {
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================
+   pie de página
+   ========================= */
+
+footer {
+    padding: var(--espacio-lg) var(--espacio-sm);
+
+    text-align: center;
+
+    color: var(--color-texto-claro);
+    background-color: var(--color-principal-oscuro);
+}
+
+footer p {
+    margin-bottom: var(--espacio-xs);
+}
+
+footer p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==================================================
+   tablet
+   ================================================== */
+
+@media (min-width: 601px) {
+
+    header {
+        padding-inline: var(--espacio-md);
+    }
+
+    nav {
+        margin-inline: calc(var(--espacio-md) * -1);
+        padding-inline: var(--espacio-md);
+    }
+
+    main {
+        padding: var(--espacio-lg) var(--espacio-md);
+    }
+
+    .lista-ahora {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-espacios {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .lista-servicios {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+
+/* ==================================================
+   escritorio
+   ================================================== */
+
+@media (min-width: 1024px) {
+
+    header {
+        padding-top: var(--espacio-xl);
+    }
+
+    nav ul {
+        justify-content: center;
+        overflow-x: visible;
+    }
+
+    main {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--espacio-xl);
+    }
+
+    #ahora,
+    #espacios {
+        grid-column: 1 / -1;
+    }
+
+    #proximamente {
+        grid-column: 1;
+    }
+
+    #cambios {
+        grid-column: 2;
+    }
+
+    #servicios {
+        grid-column: 1 / -1;
+    }
+
+    .lista-ahora {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-espacios {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .lista-servicios {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
