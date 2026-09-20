@@ -1,0 +1,322 @@
+/* =========================
+   variables generales
+   ========================= */
+
+:root {
+    --color-fondo: #f1f5f2;
+    --color-superficie: #ffffff;
+    --color-principal: #173f35;
+    --color-secundario: #2f6b59;
+    --color-texto: #1f2926;
+    --color-texto-claro: #ffffff;
+    --color-borde: #d5dfda;
+
+    --espacio-xs: 0.5rem;
+    --espacio-sm: 1rem;
+    --espacio-md: 1.5rem;
+    --espacio-lg: 2rem;
+
+    --radio: 0.75rem;
+}
+
+
+/* =========================
+   estilos generales
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+h2 {
+    color: var(--color-principal);
+}
+
+
+/* =========================
+   encabezado
+   ========================= */
+
+header {
+    background-color: var(--color-principal);
+    color: var(--color-texto-claro);
+    padding: var(--espacio-md);
+}
+
+header h1 {
+    margin-bottom: var(--espacio-xs);
+}
+
+header p {
+    margin-bottom: var(--espacio-xs);
+}
+
+
+/* =========================
+   navegación
+   ========================= */
+
+nav ul {
+    list-style: none;
+    margin: var(--espacio-md) 0 0;
+    padding: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espacio-xs);
+}
+
+nav a {
+    display: block;
+    padding: 0.6rem 0.9rem;
+    color: var(--color-texto-claro);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: var(--radio);
+}
+
+nav a:hover,
+nav a:focus {
+    background-color: var(--color-secundario);
+}
+
+
+/* =========================
+   contenido principal
+   mobile first
+   ========================= */
+
+main {
+    padding: var(--espacio-sm);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espacio-md);
+}
+
+section {
+    background-color: var(--color-superficie);
+    padding: var(--espacio-md);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+}
+
+
+/* =========================
+   indicadores
+   ========================= */
+
+.indicadores {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espacio-sm);
+}
+
+.indicador {
+    padding: var(--espacio-sm);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+}
+
+.indicador h3 {
+    font-size: 1rem;
+}
+
+.indicador p {
+    margin-bottom: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-secundario);
+}
+
+
+/* =========================
+   listas y tarjetas
+   ========================= */
+
+.lista-misiones,
+.lista-equipos,
+.lista-alertas,
+.lista-actividades {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espacio-sm);
+}
+
+.mision,
+.equipo,
+.alerta,
+.actividad {
+    padding: var(--espacio-sm);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+}
+
+.mision p,
+.equipo p,
+.alerta p,
+.actividad p {
+    margin-bottom: var(--espacio-xs);
+}
+
+
+/* =========================
+   alertas
+   ========================= */
+
+.alerta {
+    border-left-width: 0.4rem;
+}
+
+.alerta-critica {
+    border-left-color: #9f1d20;
+}
+
+.alerta-alta {
+    border-left-color: #d35f18;
+}
+
+.alerta-media {
+    border-left-color: #d0a21b;
+}
+
+.alerta-baja {
+    border-left-color: #3f7d58;
+}
+
+
+/* =========================
+   pie de página
+   ========================= */
+
+footer {
+    padding: var(--espacio-md);
+    text-align: center;
+    background-color: var(--color-principal);
+    color: var(--color-texto-claro);
+}
+
+footer p {
+    margin: 0;
+}
+
+
+
+/* =========================
+   tablet
+   ========================= */
+
+@media (min-width: 601px) {
+
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #resumen {
+        grid-column: 1 / -1;
+    }
+
+    .indicadores {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lista-misiones,
+    .lista-equipos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #alertas,
+    #agenda {
+        grid-column: 1 / -1;
+    }
+
+    .lista-alertas,
+    .lista-actividades {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =========================
+   escritorio
+   ========================= */
+
+@media (min-width: 1024px) {
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--espacio-lg);
+    }
+
+    nav ul {
+        margin-top: 0;
+    }
+
+    main {
+        max-width: 1400px;
+        margin: 0 auto;
+
+        grid-template-columns: 2fr 1fr;
+        align-items: start;
+    }
+
+    #resumen {
+        grid-column: 1 / -1;
+    }
+
+    .indicadores {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    #misiones {
+        grid-column: 1;
+    }
+
+    #equipos {
+        grid-column: 1;
+    }
+
+    #alertas {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    #agenda {
+        grid-column: 2;
+        grid-row: 3;
+    }
+
+    .lista-misiones {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lista-equipos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lista-alertas,
+    .lista-actividades {
+        grid-template-columns: 1fr;
+    }
+}
