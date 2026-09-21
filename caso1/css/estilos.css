@@ -53,6 +53,8 @@
    estilos generales
    ========================= */
 
+
+
 * {
     box-sizing: border-box;
 }
@@ -642,4 +644,16 @@ footer p {
         grid-template-columns:
             minmax(0, 1fr);
     }
+
+    /* ==================================================
+   accesibilidad
+   reduce el movimiento cuando el usuario
+   tiene activada esta preferencia
+   ================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
 }
